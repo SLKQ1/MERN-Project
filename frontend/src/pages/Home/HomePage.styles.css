@@ -1,0 +1,9 @@
+.homepage-title-content {
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 1rem;
+}
+
+.homepage-title-content > h1 {
+  font-size: 3rem;
+}
