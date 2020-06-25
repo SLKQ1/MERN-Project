@@ -1,6 +1,8 @@
 import React from "react";
 import "./HamburgerMenu.styles.css";
 
+import { Link } from "react-router-dom";
+
 function HamburgerMenu() {
   return (
     <div className="menu-wrap">
@@ -13,13 +15,13 @@ function HamburgerMenu() {
           <div>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/">About</a>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <a href="/">Sign In</a>
+                <Link to="/sign-in">Sign In</Link>
               </li>
             </ul>
           </div>

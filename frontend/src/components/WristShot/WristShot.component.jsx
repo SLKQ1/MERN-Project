@@ -3,7 +3,6 @@ import React from "react";
 import "./WristShot.styles.css";
 
 function WristShot({ user, votes, imgURL }) {
-  console.log(user);
   return (
     <div
       className="wristshot-grid-item"
