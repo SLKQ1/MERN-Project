@@ -3,12 +3,12 @@ import "./App.css";
 
 // importing components
 import HomePage from "./pages/Home/HomePage.component";
-import Header from "./components/Header/Header.component";
+import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu.component";
 
 function App() {
   return (
     <div>
-      <Header />
+      <HamburgerMenu />
       <HomePage />
     </div>
   );

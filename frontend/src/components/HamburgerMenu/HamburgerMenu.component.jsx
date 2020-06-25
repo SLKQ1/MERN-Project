@@ -1,7 +1,7 @@
 import React from "react";
-import "./Header.styles.css";
+import "./HamburgerMenu.styles.css";
 
-function Header() {
+function HamburgerMenu() {
   return (
     <div className="menu-wrap">
       <input type="checkbox" className="toggler" />
@@ -28,4 +28,4 @@ function Header() {
     </div>
   );
 }
-export default Header;
+export default HamburgerMenu;
