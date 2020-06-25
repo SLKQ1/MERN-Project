@@ -4,7 +4,7 @@
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   /* background-color: lightblue; */
-  padding: 40px;
+  padding: 50px;
 }
 
 .dashboard-grid-item {
