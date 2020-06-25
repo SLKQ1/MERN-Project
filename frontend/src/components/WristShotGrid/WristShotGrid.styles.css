@@ -1,0 +1,15 @@
+/* css for desktop */
+.wristshot-grid-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  /* background-color: lightblue; */
+  padding: 50px;
+}
+
+/* css for mobile */
+@media (max-width: 480px) {
+  .wristshot-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

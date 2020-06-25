@@ -1,0 +1,27 @@
+.wristshot-grid-item {
+  /* background-color: blueviolet; */
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 80px 30px;
+  font-size: 30px;
+  /* text-align: right; */
+  /* styling image  */
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.wristshot-grid-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* styling item elements */
+.wristshot-grid-item-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: fit-content;
+  float: right;
+  padding: 0 5px;
+  font-size: 25px;
+}
