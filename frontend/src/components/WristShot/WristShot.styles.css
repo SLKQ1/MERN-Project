@@ -2,7 +2,7 @@
   /* background-color: blueviolet; */
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 80px 30px;
+  padding: 8rem 10px;
   font-size: 30px;
   /* text-align: right; */
   /* styling image  */
@@ -17,11 +17,11 @@
 }
 
 /* styling item elements */
-.wristshot-grid-item-content {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  width: fit-content;
+/* styling text under image */
+.wristshot-user {
+  float: left;
+}
+
+.wristshot-votes {
   float: right;
-  padding: 0 5px;
-  font-size: 25px;
 }

@@ -5,6 +5,8 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   /* background-color: lightblue; */
   padding: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* css for mobile */

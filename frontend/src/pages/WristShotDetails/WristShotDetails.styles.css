@@ -1,0 +1,31 @@
+.wristshot-details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+.wristshot-details-grid-item {
+  /* background: red; */
+  padding: 20px;
+  border: black 1px solid;
+}
+
+.wristshot-image-container {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  /* transform: scale(0); */
+}
+.wristshot-user-details-container {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.wrist-shot-comments-container {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
