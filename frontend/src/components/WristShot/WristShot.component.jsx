@@ -8,26 +8,33 @@ function WristShot({ user, votes, imgURL, match, id, history, homepage }) {
     history.push(`${match.url}wrist-shot/${id}`);
   };
 
+  console.log(imgURL);
+
   let user_span;
   let votes_span;
+  let class_name;
   if (homepage) {
-    user_span = <span className="wristshot-user">by {user} </span>;
-    votes_span = <span className="wristshot-votes"> &#9733; {votes} </span>;
+    user_span = <span className="wrist-shot-user">by {user} </span>;
+    votes_span = <span className="wrist-shot-votes"> &#9733; {votes} </span>;
+    class_name = "wrist-shot-grid-item";
   } else {
     user_span = null;
     votes_span = null;
+    class_name = "wrist-shot-grid-item-inactive";
   }
   return (
-    <div>
+    <div className="wrist-shot-grid-item">
       <div
         onClick={changeRoute}
-        className="wristshot-grid-item"
         style={{
           backgroundImage: `url(${imgURL})`,
         }}
-      ></div>
-      {user_span}
-      {votes_span}
+        className="wrist-shot-grid-image"
+      />
+      <div className="wrist-shot-grid-item-footer">
+        {user_span}
+        {votes_span}
+      </div>
     </div>
   );
 }

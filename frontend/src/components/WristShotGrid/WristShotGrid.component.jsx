@@ -57,7 +57,7 @@ class WristShotGrid extends Component {
   }
   render() {
     return (
-      <div className="wristshot-grid-container">
+      <div className="wrist-shot-grid">
         {this.state.wrist_shots.map(({ id, ...otherProps }) => {
           return <WristShot key={id} id={id} {...otherProps} homepage={true} />;
         })}

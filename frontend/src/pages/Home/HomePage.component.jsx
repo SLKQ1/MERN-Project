@@ -9,7 +9,9 @@ function HomePage() {
         <h1>Welcome to Wrist Shot</h1>
         <p>Post and explore amazing wrist shots.</p>
       </div>
-      <WristShotGrid />
+      <div className="wrist-shot-grid-container">
+        <WristShotGrid />
+      </div>
     </div>
   );
 }
