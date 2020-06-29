@@ -7,18 +7,20 @@ const { timeStamp } = require("console");
 const userSchema = new Schema(
   {
     username: {
-      String,
+      type: String,
       required: true,
       unique: true,
       trim: true,
       minlength: 3,
       maxlength: 10,
     },
-    email: { String, required: true, unique: true, trim: true },
-    password: { String, required: true },
-    post: [{ post }],
+    email: { type: String, required: true, unique: true, trim: true },
+    password: { type: String, required: true },
+    post: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
-  { timestaps: true }
+  {
+    timestamps: true,
+  }
 );
 
 const User = mongoose.model("User", userSchema);
