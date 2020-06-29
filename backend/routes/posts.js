@@ -30,27 +30,27 @@ router.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// deleting a specific post
-router.route("/delete/:id").delete((req, res) => {
-  Post.findByIdAndDelete(req.params.id)
-    .then((post) => res.json("Post deleted: " + post))
-    .catch((err) => res.json("Error: " + err));
-});
-
 // updating a specific post
 router.route("/update/:id").put((req, res) => {
   Post.findById(req.params.id)
     .then((post) => {
       post.title = req.body.title;
-      post.postedBy = post.postedBy;
-      post.votes = post.votes;
-      post.comments = post.comments;
+      post.postedBy = post.body.postedBy;
+      post.votes = post.body.votes;
+      post.comments = post.body.comments;
 
       post
         .save()
         .then(() => res.json("Post updated: " + post))
         .catch((err) => res.json("Error: " + err));
     })
+    .catch((err) => res.json("Error: " + err));
+});
+
+// deleting a specific post
+router.route("/delete/:id").delete((req, res) => {
+  Post.findByIdAndDelete(req.params.id)
+    .then((post) => res.json("Post deleted: " + post))
     .catch((err) => res.json("Error: " + err));
 });
 
