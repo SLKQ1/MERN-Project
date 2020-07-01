@@ -56,3 +56,5 @@ const postReducer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default postReducer;
