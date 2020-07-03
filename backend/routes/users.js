@@ -31,17 +31,19 @@ router.route("/:id").get((req, res) => {
 
 // updating a specific user
 router.route("/update/:id").put((req, res) => {
-  User.findById(req.params.id).then((user) => {
-    (user.username = req.body.username),
-      (user.email = req.body.email),
-      (user.password = req.body.password),
-      (user.posts = user.body.posts);
+  User.findById(req.params.id)
+    .then((user) => {
+      (user.username = req.body.username),
+        (user.email = req.body.email),
+        (user.password = req.body.password),
+        (user.posts = user.body.posts);
 
-    user
-      .save()
-      .then((user) => res.json("User updated: " + user))
-      .catch((err) => res.status(400).json("Error: " + err));
-  });
+      user
+        .save()
+        .then((user) => res.json("User updated: " + user))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // deleting a specific user

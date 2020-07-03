@@ -11,11 +11,20 @@ router.route("/").get((req, res) => {
 // creating a new post
 router.route("/add").post((req, res) => {
   const title = req.body.title;
+  const description = req.body.description;
   const postedBy = req.body.postedBy;
+  const imgURL = req.body.imgURL;
   const votes = 0;
   const comments = [];
 
-  const newPost = new Post({ title, postedBy, votes, comments });
+  const newPost = new Post({
+    title,
+    description,
+    postedBy,
+    imgURL,
+    votes,
+    comments,
+  });
 
   newPost
     .save()
@@ -35,8 +44,10 @@ router.route("/update/:id").put((req, res) => {
   Post.findById(req.params.id)
     .then((post) => {
       post.title = req.body.title;
+      post.description = req.body.description;
       post.postedBy = post.body.postedBy;
-      post.votes = post.body.votes;
+      post.imgURL = post.body.imgURL;
+      post.votes = Number(post.body.votes);
       post.comments = post.body.comments;
 
       post
