@@ -5,6 +5,7 @@
   height: 350px;
   width: 100%;
   transition: all 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .wrist-shot-grid-item:hover {
@@ -19,6 +20,7 @@
   background-position: center;
   margin-bottom: 5px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgb(116, 116, 116);
 }
 
 .wrist-shot-grid-item-footer {
@@ -27,4 +29,16 @@
   display: flex;
   justify-content: space-between;
   font-size: 15px;
+}
+
+/* styling full size link */
+#full-size-link {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+#full-size-link:hover {
+  background-color: #3fa9cf;
 }
