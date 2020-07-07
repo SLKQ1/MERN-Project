@@ -1,6 +1,6 @@
 import React from "react";
 import "./Modal.styles.css";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import Image from "../Image/Image.component";
 import { connect } from "react-redux";
 import Button from "../Button/Button.component";
@@ -28,14 +28,17 @@ function Modal(props) {
   };
 
   return (
-    <div className="modal-container" onClick={back}>
+    <div className="modal-container">
+      <Button type="button" onClick={back}>
+        Close
+      </Button>
       <div className="modal">
         <div className="modal-content-container">
           <div className="modal-title-container">
-            <span>By {filtered_wrist_shot.user}</span>
-            <Button type="button" onClick={back}>
-              Close
-            </Button>
+            <span>By {filtered_wrist_shot.postedBy}</span>
+            <Link id="full-size-link" to={`full-size/${id}`}>
+              View Full Image
+            </Link>
             <span> &#9733; {filtered_wrist_shot.votes} </span>
           </div>
 

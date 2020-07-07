@@ -17,7 +17,7 @@ function WristShotGrid({ wrist_shots }) {
             key={id}
             to={{
               pathname: `/wrist-shot/${id}`,
-              state: { background: location, name: "faiz" },
+              state: { background: location },
             }}
             id={id}
           >

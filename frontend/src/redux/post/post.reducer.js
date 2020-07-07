@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   wrist_shots: [
     {
       id: 1,
-      user: "Faiz",
+      postedBy: "Faiz",
       date: Date(),
       watch: "Rolex Explorer 2 Polar",
       votes: 20,
@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     },
     {
       id: 2,
-      user: "Bob",
+      postedBy: "Bob",
       date: Date(),
       watch: "SKX013 Black",
       votes: 10,
@@ -19,7 +19,7 @@ const INITIAL_STATE = {
     },
     {
       id: 3,
-      user: "James",
+      postedBy: "James",
       date: Date(),
       watch: "Rolex Submariner",
       votes: 5,
@@ -27,7 +27,7 @@ const INITIAL_STATE = {
     },
     {
       id: 4,
-      user: "Ahmad",
+      postedBy: "Ahmad",
       date: Date(),
       watch: "GS Snowflake",
       votes: 4,
@@ -35,7 +35,7 @@ const INITIAL_STATE = {
     },
     {
       id: 5,
-      user: "Bilal",
+      postedBy: "Bilal",
       date: Date(),
       watch: "Rolex Explorer 1",
       votes: 1,

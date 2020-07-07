@@ -2,7 +2,6 @@ import React from "react";
 import "./Button.styles.css";
 
 function Button({ children, ...otherProps }) {
-  console.log(otherProps);
   return (
     <button className="custom-btn" {...otherProps}>
       {children}

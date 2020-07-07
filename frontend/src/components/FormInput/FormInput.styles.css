@@ -1,0 +1,27 @@
+.group {
+  font-size: 20px;
+  margin-bottom: 1rem;
+  width: 500px;
+}
+
+.group label,
+textarea {
+  font-size: 15px;
+  /* text-transform: capitalize; */
+  letter-spacing: 1px;
+}
+
+/* styling textarea and form input */
+.form-input,
+.text-area {
+  width: 100%;
+  padding: 12px 0px;
+  margin: 8px 0;
+  display: block;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+}

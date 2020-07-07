@@ -30,15 +30,3 @@
   justify-content: space-between;
   font-size: 15px;
 }
-
-/* styling full size link */
-#full-size-link {
-  text-decoration: none;
-  color: black;
-  padding: 0.5rem;
-  transition: all 0.2s ease-in-out;
-}
-
-#full-size-link:hover {
-  background-color: #3fa9cf;
-}

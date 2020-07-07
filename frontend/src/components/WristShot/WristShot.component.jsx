@@ -1,14 +1,11 @@
 import React from "react";
 import "./WristShot.styles.css";
 
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-function WristShot({ user, votes, imgURL, match, id, history, homepage }) {
+function WristShot({ postedBy, votes, imgURL, match, id, history, homepage }) {
   return (
     <div className="wrist-shot-grid-item">
-      <Link id="full-size-link" to={`full-size/${id}`}>
-        View Full Image
-      </Link>
       <div
         style={{
           backgroundImage: `url(${imgURL})`,
@@ -16,7 +13,7 @@ function WristShot({ user, votes, imgURL, match, id, history, homepage }) {
         className="wrist-shot-grid-image"
       />
       <div className="wrist-shot-grid-item-footer">
-        <span className="wrist-shot-user">by {user} </span>
+        <span className="wrist-shot-user">by {postedBy} </span>
         <span className="wrist-shot-votes"> &#9733; {votes} </span>
       </div>
     </div>

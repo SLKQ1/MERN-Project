@@ -7,6 +7,13 @@
   background-color: rgba(0, 0, 0, 0.596);
 }
 
+/* styling button*/
+.modal-container > button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
 .modal {
   position: absolute;
   background-color: white;
@@ -46,12 +53,6 @@
   font-size: 1.5rem;
 }
 
-/* styling button */
-.modal-title-container > button {
-  box-shadow: none;
-  padding: 2px 20px;
-}
-
 .modal-title-container > span {
   float: left;
 }
@@ -59,9 +60,25 @@
   float: right;
 }
 
+/* styling full size link */
+#full-size-link {
+  border: 0.5px solid #3fa9cf;
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+#full-size-link:hover {
+  background-color: #3fa9cf;
+}
+
 /* css for mobile */
 @media (max-width: 480px) {
   .modal {
-    height: 70vh;
+    height: 80vh;
+  }
+  .modal-title-container {
+    font-size: 20px;
   }
 }
