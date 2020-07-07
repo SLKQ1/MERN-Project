@@ -4,7 +4,6 @@ import FormInput from "../../components/FormInput/FormInput.component";
 import Button from "../../components/Button/Button.component";
 import { connect } from "react-redux";
 import { createNewPost } from "../../redux/post/post.action";
-import { useHistory, Redirect } from "react-router-dom";
 
 class PostPage extends Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class PostPage extends Component {
     ) {
       // dispatching action to redux to make new post
       this.props.createNewPost(this.state);
-      const id = this.state.id;
       // resetting state
       this.setState({
         id: 6,

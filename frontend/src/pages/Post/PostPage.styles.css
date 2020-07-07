@@ -10,3 +10,12 @@
   padding-bottom: 1rem;
   text-decoration: underline;
 }
+
+/* css for mobile */
+@media (max-width: 480px) {
+  .create-post-container {
+  }
+  .create-post-container .post-form label {
+    font-size: 20px;
+  }
+}

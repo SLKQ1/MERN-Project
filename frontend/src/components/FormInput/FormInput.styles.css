@@ -7,7 +7,6 @@
 .group label,
 textarea {
   font-size: 15px;
-  /* text-transform: capitalize; */
   letter-spacing: 1px;
 }
 
@@ -24,4 +23,13 @@ textarea {
   outline: none;
   border-bottom: 1px solid black;
   font-size: 13px;
+}
+
+/* css for mobile */
+@media (max-width: 480px) {
+  .group {
+    font-size: 20px;
+    margin-bottom: 1rem;
+    width: 90vw;
+  }
 }

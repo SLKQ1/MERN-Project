@@ -10,6 +10,7 @@ import PostPage from "./pages/Post/PostPage.component";
 
 // importing react router
 import { Route, Switch, useLocation } from "react-router-dom";
+import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
 
 function App() {
   let location = useLocation();
@@ -19,6 +20,7 @@ function App() {
       <HamburgerMenu />
       <Switch location={background || location}>
         <Route exact path="/" component={HomePage} />
+        <Route path="/sign-in" component={SignInAndSignUpPage} />
         <Route path="/wrist-shot/full-size/:id" component={FullSizeImage} />
         <Route path="/post" component={PostPage} />
       </Switch>

@@ -1,0 +1,14 @@
+.sign-in-and-sign-up-container {
+  display: flex;
+  /* flex-direction: row; */
+  padding: 4rem 4rem;
+  justify-content: space-between;
+}
+
+/* css for mobile */
+@media (max-width: 480px) {
+  .sign-in-and-sign-up-container {
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+}
