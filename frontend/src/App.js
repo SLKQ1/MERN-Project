@@ -7,10 +7,10 @@ import HamburgerMenu from "./components/HamburgerMenu/HamburgerMenu.component";
 import Modal from "./components/Modal/Modal.component";
 import FullSizeImage from "./pages/FullSizeImage/FullSizeImage.component";
 import PostPage from "./pages/Post/PostPage.component";
+import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
 
 // importing react router
 import { Route, Switch, useLocation } from "react-router-dom";
-import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
 
 function App() {
   let location = useLocation();

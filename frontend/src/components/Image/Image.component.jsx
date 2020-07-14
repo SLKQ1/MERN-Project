@@ -1,8 +1,8 @@
 import React from "react";
 import "./Image.styles.css";
 
-function Image({ filtered_wrist_shot }) {
-  const { imgURL } = filtered_wrist_shot;
+function Image({ wrist_shot }) {
+  const { imgURL } = wrist_shot;
   return (
     <div
       className="modal-img"

@@ -1,62 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Modal.styles.css";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Image from "../Image/Image.component";
 import { connect } from "react-redux";
 import Button from "../Button/Button.component";
+import { fetchPostStartAsync } from "../../redux/post/post.action";
+import { Link } from "react-router-dom";
 
-function Modal(props) {
-  let { wrist_shots } = props;
-  let { id } = useParams();
-
-  // filtering needed wrist shot from required
-  let filtered_wrist_shot = null;
-  wrist_shots.forEach(function (wrist_shot) {
-    id = parseInt(id, 10);
-    if (wrist_shot.id === id) {
-      // console.log(wrist_shot);
-      filtered_wrist_shot = wrist_shot;
-    }
-  });
-
-  // console.log(filtered_wrist_shot);
-
-  let history = useHistory();
-  const back = (e) => {
+class Modal extends Component {
+  componentDidMount() {
+    // calling async request to get wrist shot
+    this.props.dispatch(fetchPostStartAsync(this.props.match.params.id));
+  }
+  back = (e) => {
+    const { history } = this.props;
     e.stopPropagation();
     history.goBack();
   };
+  render() {
+    return (
+      <div className="modal-container">
+        <Button type="button" onClick={this.back}>
+          Close
+        </Button>
+        <div className="modal">
+          {this.props.wrist_shot ? (
+            <div className="modal-content-container">
+              <div className="modal-title-container">
+                <span>By {this.props.wrist_shot.data.postedBy}</span>
+                <Link
+                  id="full-size-link"
+                  to={`full-size/${this.props.wrist_shot.data._id}`}
+                >
+                  View Full Image
+                </Link>
+                <span> &#9733; {this.props.wrist_shot.data.votes} </span>
+              </div>
 
-  return (
-    <div className="modal-container">
-      <Button type="button" onClick={back}>
-        Close
-      </Button>
-      <div className="modal">
-        <div className="modal-content-container">
-          <div className="modal-title-container">
-            <span>By {filtered_wrist_shot.postedBy}</span>
-            <Link id="full-size-link" to={`full-size/${id}`}>
-              View Full Image
-            </Link>
-            <span> &#9733; {filtered_wrist_shot.votes} </span>
-          </div>
+              <div className="modal-img-container">
+                <Image wrist_shot={this.props.wrist_shot.data} />
+              </div>
 
-          <div className="modal-img-container">
-            <Image filtered_wrist_shot={filtered_wrist_shot} />
-          </div>
-
-          <div className="modal-comments-container">
-            <h1>Comments Section Coming Soon</h1>
-          </div>
+              <div className="modal-comments-container">
+                <h1>Comments Section Coming Soon</h1>
+              </div>
+            </div>
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+const mapStateToProps = (state) => {
+  return {
+    wrist_shots: state.post.wrist_shots,
+    wrist_shot: state.post.wrist_shot,
+  };
+};
 
-const mapStateToProps = (state) => ({
-  wrist_shots: state.post.wrist_shots,
-});
-
-export default connect(mapStateToProps)(Modal);
+export default connect(mapStateToProps)(withRouter(Modal));

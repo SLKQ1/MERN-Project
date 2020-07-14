@@ -53,4 +53,11 @@ router.route("/delete/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// delete all users (for testing)
+router.route("/deleteAll").delete((req, res) => {
+  User.deleteMany({})
+    .then(() => res.json("All users deleted"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;

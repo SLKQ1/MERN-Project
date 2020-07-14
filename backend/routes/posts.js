@@ -53,16 +53,23 @@ router.route("/update/:id").put((req, res) => {
       post
         .save()
         .then(() => res.json("Post updated: " + post))
-        .catch((err) => res.json("Error: " + err));
+        .catch((err) => res.status(400).json("Error: " + err));
     })
-    .catch((err) => res.json("Error: " + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // deleting a specific post
 router.route("/delete/:id").delete((req, res) => {
   Post.findByIdAndDelete(req.params.id)
     .then((post) => res.json("Post deleted: " + post))
-    .catch((err) => res.json("Error: " + err));
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// delete all posts (for testing)
+router.route("/deleteAll").delete((req, res) => {
+  Post.deleteMany({})
+    .then(() => res.json("All posts deleted"))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;

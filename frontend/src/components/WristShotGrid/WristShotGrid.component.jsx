@@ -3,7 +3,6 @@ import "./WristShotGrid.styles.css";
 
 import WristShot from "../WristShot/WristShot.component";
 
-import { connect } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 function WristShotGrid({ wrist_shots }) {
@@ -11,18 +10,18 @@ function WristShotGrid({ wrist_shots }) {
 
   return (
     <div className="wrist-shot-grid">
-      {wrist_shots.map(({ id, ...otherProps }) => {
+      {wrist_shots.map(({ _id, ...otherProps }) => {
         return (
           <Link
-            key={id}
+            key={_id}
             to={{
-              pathname: `/wrist-shot/${id}`,
+              pathname: `/wrist-shot/${_id}`,
               state: { background: location },
             }}
-            id={id}
+            id={_id}
           >
             {" "}
-            <WristShot id={id} {...otherProps} />
+            <WristShot id={_id} {...otherProps} />
           </Link>
         );
       })}
@@ -30,8 +29,4 @@ function WristShotGrid({ wrist_shots }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  wrist_shots: state.post.wrist_shots,
-});
-
-export default connect(mapStateToProps)(WristShotGrid);
+export default WristShotGrid;
