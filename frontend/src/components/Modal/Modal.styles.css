@@ -55,6 +55,7 @@
 
 .modal-title-container > span {
   float: left;
+  cursor: pointer;
 }
 .modal-container span:nth-child(2) {
   float: right;
@@ -71,6 +72,17 @@
 
 #full-size-link:hover {
   background-color: #3fa9cf;
+}
+
+/* styling description */
+.modal-description-container {
+  padding: 10px 0;
+}
+.modal-description-container > h2 {
+  font-size: 32px;
+}
+.modal-description-container > p {
+  font-size: 20px;
 }
 
 /* css for mobile */

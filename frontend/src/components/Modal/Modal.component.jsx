@@ -18,6 +18,9 @@ class Modal extends Component {
     history.goBack();
   };
   render() {
+    const incrementVotes = () => {
+      console.log("send dispatch to increase votes");
+    };
     return (
       <div className="modal-container">
         <Button type="button" onClick={this.back}>
@@ -34,11 +37,19 @@ class Modal extends Component {
                 >
                   View Full Image
                 </Link>
-                <span> &#9733; {this.props.wrist_shot.data.votes} </span>
+                <span onClick={incrementVotes}>
+                  {" "}
+                  &#9733; {this.props.wrist_shot.data.votes}{" "}
+                </span>
               </div>
 
               <div className="modal-img-container">
                 <Image wrist_shot={this.props.wrist_shot.data} />
+              </div>
+
+              <div className="modal-description-container">
+                <h2>Description: </h2>
+                <p>{this.props.wrist_shot.data.description}</p>
               </div>
 
               <div className="modal-comments-container">
