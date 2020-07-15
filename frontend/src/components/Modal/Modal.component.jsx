@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 class Modal extends Component {
   componentDidMount() {
     // calling async request to get wrist shot
-    this.props.dispatch(fetchPostStartAsync(this.props.match.params.id));
+    const { fetchPostStartAsync } = this.props;
+    fetchPostStartAsync(this.props.match.params.id);
   }
   back = (e) => {
     const { history } = this.props;
@@ -71,4 +72,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withRouter(Modal));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPostStartAsync: (post_id) => dispatch(fetchPostStartAsync(post_id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Modal));
