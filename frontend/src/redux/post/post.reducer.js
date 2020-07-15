@@ -49,11 +49,27 @@ const postReducer = (state = INITIAL_STATE, action) => {
       };
 
     // creating a new post
-    case postActionTypes.CREATE_NEW_POST:
+    case postActionTypes.CREATE_NEW_POST_START:
       return {
         ...state,
-        wrist_shots: state.wrist_shots.concat(action.payload),
+        isFetching: true,
       };
+    case postActionTypes.CREATE_NEW_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+      };
+    case postActionTypes.CREATE_NEW_POST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
+    // case postActionTypes.CREATE_NEW_POST:
+    //   return {
+    //     ...state,
+    //     wrist_shots: state.wrist_shots.concat(action.payload),
+    //   };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import postActionTypes from "./post.type";
 const axios = require("axios").default;
+const url = "http://localhost:5000/posts";
 
 // action for fetching collection
 export const fetchCollectionStart = () => {
@@ -28,7 +29,7 @@ export const fetchCollectionStartAsync = () => {
     dispatch(fetchCollectionStart());
     // async request
     axios
-      .get("http://localhost:5000/posts")
+      .get(url)
       .then((res) => {
         // dispatching success action
         dispatch(fetchCollectionSuccess(res.data));
@@ -63,13 +64,12 @@ export const fetchPostFailure = (error) => {
 };
 // action to make async call to fetch post
 export const fetchPostStartAsync = (wrist_shot_id) => {
-  console.log(wrist_shot_id);
   return (dispatch) => {
     // dispatching fetching post action
     dispatch(fetchPostStart());
     // making api call to get post
     axios
-      .get(`http://localhost:5000/posts/${wrist_shot_id}`)
+      .get(`${url}/${wrist_shot_id}`)
       .then((res) => {
         // dispatching success action
         // console.log(res)
@@ -77,12 +77,49 @@ export const fetchPostStartAsync = (wrist_shot_id) => {
       })
       .catch((error) => {
         // dispatching failure action
-        dispatch(fetchPostFailure(error));
+        dispatch(fetchPostFailure(error.message));
       });
   };
 };
 
 // action for creating a new post
+export const createNewPostStart = () => {
+  return {
+    type: postActionTypes.CREATE_NEW_POST_START,
+  };
+};
+
+export const createNewPostSuccess = (post) => {
+  return {
+    type: postActionTypes.CREATE_NEW_POST_SUCCESS,
+    payload: post,
+  };
+};
+
+export const createNewPostFailure = (error) => {
+  return {
+    type: postActionTypes.CREATE_NEW_POST_FAILURE,
+    payload: error,
+  };
+};
+
+export const createNewPostStartAsync = (post) => {
+  return (dispatch) => {
+    // dispatching creating post action
+    dispatch(createNewPostStart());
+    // making api call to create post
+    axios
+      .post(`${url}/add`, post)
+      .then((res) => {
+        // dispatching success action
+        dispatch(createNewPostSuccess(res));
+      })
+      .catch((error) => {
+        dispatch(createNewPostFailure(error.message));
+      });
+  };
+};
+
 export const createNewPost = (post) => {
   return {
     type: postActionTypes.CREATE_NEW_POST,

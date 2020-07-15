@@ -3,18 +3,16 @@ import "./PostPage.styles.css";
 import FormInput from "../../components/FormInput/FormInput.component";
 import Button from "../../components/Button/Button.component";
 import { connect } from "react-redux";
-import { createNewPost } from "../../redux/post/post.action";
+import { createNewPostStartAsync } from "../../redux/post/post.action";
 
 class PostPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 6,
       title: "",
       description: "",
       imgURL: "",
       postedBy: "Faiz",
-      votes: 0,
     };
   }
 
@@ -33,15 +31,13 @@ class PostPage extends Component {
       this.state.imgURL !== ""
     ) {
       // dispatching action to redux to make new post
-      this.props.createNewPost(this.state);
+      this.props.createNewPostStartAsync(this.state);
       // resetting state
       this.setState({
-        id: 6,
         title: "",
         description: "",
         imgURL: "",
         postedBy: "Faiz",
-        votes: 0,
       });
 
       // redirecting user
@@ -87,7 +83,7 @@ class PostPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  createNewPost: (post) => dispatch(createNewPost(post)),
+  createNewPostStartAsync: (post) => dispatch(createNewPostStartAsync(post)),
 });
 
 export default connect(null, mapDispatchToProps)(PostPage);
