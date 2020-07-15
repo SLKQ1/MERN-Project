@@ -11,6 +11,7 @@ import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.com
 
 // importing react router
 import { Route, Switch, useLocation } from "react-router-dom";
+import ProfilePage from "./pages/Profile/ProfilePage.component";
 
 function App() {
   let location = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sign-in" component={SignInAndSignUpPage} />
         <Route path="/wrist-shot/full-size/:id" component={FullSizeImage} />
         <Route path="/post" component={PostPage} />
+        <Route path="/profile/:id" component={ProfilePage} />
       </Switch>
       {/* show modal when background is set */}
       {background && <Route path="/wrist-shot/:id" children={<Modal />} />}

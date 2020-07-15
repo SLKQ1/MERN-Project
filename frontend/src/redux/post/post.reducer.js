@@ -65,11 +65,6 @@ const postReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         errorMessage: action.payload,
       };
-    // case postActionTypes.CREATE_NEW_POST:
-    //   return {
-    //     ...state,
-    //     wrist_shots: state.wrist_shots.concat(action.payload),
-    //   };
     default:
       return state;
   }
