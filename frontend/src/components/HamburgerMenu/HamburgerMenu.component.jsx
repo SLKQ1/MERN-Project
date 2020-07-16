@@ -2,6 +2,7 @@ import React from "react";
 import "./HamburgerMenu.styles.css";
 
 import SignedInLinks from "../SignedInLinks/SignedInLinks.component";
+import SignedOutLinks from "../SignedOutLinks/SignedOutLinks.component";
 
 function HamburgerMenu() {
   return (
@@ -13,8 +14,8 @@ function HamburgerMenu() {
       <div className="menu">
         <div>
           <div>
-            <SignedInLinks />
-            {/* <SignedOutLinks /> */}
+            {/* <SignedInLinks /> */}
+            <SignedOutLinks />
           </div>
         </div>
       </div>

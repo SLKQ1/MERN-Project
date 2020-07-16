@@ -10,7 +10,7 @@ function ProfilePage() {
       </div>
       <div className="profile-content-container">
         <div className="profile-user-posts-container">
-          <h2 className="profile-page-content-title">Posts: </h2>
+          <h2 className="profile-page-content-title">Your posts: </h2>
           <WristShot></WristShot>
           <WristShot></WristShot>
           <WristShot></WristShot>
