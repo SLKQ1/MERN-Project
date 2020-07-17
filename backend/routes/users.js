@@ -1,5 +1,7 @@
 const router = require("express").Router();
 let User = require("../models/user.model");
+const bcrypt = require("bcryptjs");
+const salt = bcrypt.genSaltSync(10);
 
 // getting all users
 router.route("/").get((req, res) => {
@@ -13,8 +15,14 @@ router.route("/add").post((req, res) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  const encryptedPassword = bcrypt.hashSync(password, salt);
   const posts = [];
-  const newUser = new User({ username, email, password, posts });
+  const newUser = new User({
+    username,
+    email,
+    password: encryptedPassword,
+    posts,
+  });
   newUser
     .save()
     .then(() => res.json("User added!"))
