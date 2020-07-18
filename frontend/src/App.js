@@ -10,18 +10,31 @@ import PostPage from "./pages/Post/PostPage.component";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
 
 // importing react router
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import ProfilePage from "./pages/Profile/ProfilePage.component";
+// importing redux
+import { connect } from "react-redux";
+import { signUpSuccess } from "./redux/user/user.actions";
 
-function App() {
+function App(props) {
+  // destructuring necessary props
+  const { currentUser } = props;
+  console.log(currentUser);
+
   let location = useLocation();
   let background = location.state && location.state.background;
   return (
     <div>
-      <HamburgerMenu />
+      <HamburgerMenu currentUser={currentUser} />
       <Switch location={background || location}>
         <Route exact path="/" component={HomePage} />
-        <Route path="/sign-in" component={SignInAndSignUpPage} />
+        <Route
+          exact
+          path="/sign-in"
+          render={() =>
+            currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+          }
+        />
         <Route path="/wrist-shot/full-size/:id" component={FullSizeImage} />
         <Route path="/post" component={PostPage} />
         <Route path="/profile/:id" component={ProfilePage} />
@@ -32,4 +45,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+  };
+};
+
+export default connect(mapStateToProps)(App);

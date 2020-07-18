@@ -11,10 +11,10 @@ router.post("/sign-up", (req, res, next) => {
         error: "Error: " + error.message || "Internal server error",
       });
     }
-    // logic for if user already exists
-    if (user === false) {
-      return res.json(info.message);
-    }
+    // // logic for if user already exists
+    // if (user === false) {
+    //   return res.json(info.message);
+    // }
     // success logic
     return res.json(user);
   })(req, res, next);
@@ -30,10 +30,10 @@ router.post("/sign-in", (req, res, next) => {
         error: "Error: " + error.message || "Internal server error",
       });
     }
-    // logic for if user already exists
-    if (user === false) {
-      return res.json(info.message);
-    }
+    // // logic for if user already exists
+    // if (user === false) {
+    //   return res.json(user);
+    // }
     // success logic
     return res.json(user);
   })(req, res, next);

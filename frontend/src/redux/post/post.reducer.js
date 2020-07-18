@@ -16,7 +16,6 @@ const postReducer = (state = INITIAL_STATE, action) => {
         isFetching: true,
       };
     case postActionTypes.FETCH_COLLECTION_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         isFetching: false,

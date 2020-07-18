@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./SignIn.styles.css";
+import { connect } from "react-redux";
 
 import FormInput from "../FormInput/FormInput.component";
 import Button from "../Button/Button.component";
+import { signInStartAsync } from "../../redux/user/user.actions";
 
 class SignIn extends Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    // dispatching action to fetch user
+    this.props.signInStartAsync(this.state);
     this.setState({ email: "", password: "" });
   };
 
@@ -57,4 +61,10 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signInStartAsync: (credentials) => dispatch(signInStartAsync(credentials)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);

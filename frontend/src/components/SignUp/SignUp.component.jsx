@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./SignUp.styles.css";
+import { connect } from "react-redux";
 
 import FormInput from "../FormInput/FormInput.component";
 import Button from "../Button/Button.component";
+import { Redirect } from "react-router-dom";
+import { signUpStartAsync } from "../../redux/user/user.actions";
 
 class SignUp extends Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class SignUp extends Component {
       email: "",
       username: "",
       password: "",
+      confirmPassword: "",
     };
   }
 
@@ -22,11 +26,27 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
-    this.setState({ email: "", username: "", password: "" });
+    console.log(this.props);
+    // making sure password and confirm password match
+    if (this.state.password === this.state.confirmPassword) {
+      // dispatching async sign up action
+      this.props.signUpStartAsync(this.state);
+      // resetting state
+      this.setState({
+        email: "",
+        username: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } else {
+      console.log("passwords don't match");
+    }
   };
 
   render() {
+    if (this.props.currentUser) {
+      return <Redirect to="/"></Redirect>;
+    }
     return (
       <div className="sign-up">
         <h2>Don't have an account?</h2>
@@ -58,6 +78,14 @@ class SignUp extends Component {
             value={this.state.password}
             required
           />
+          <FormInput
+            onChange={this.handleChange}
+            label="Confirm password"
+            type="password"
+            name="confirmPassword"
+            value={this.state.confirmPassword}
+            required
+          />
 
           <Button type="submit">Sign Up</Button>
         </form>
@@ -65,4 +93,17 @@ class SignUp extends Component {
     );
   }
 }
-export default SignUp;
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    currentUser: state.user.currentUser,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUpStartAsync: (credentials) => dispatch(signUpStartAsync(credentials)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

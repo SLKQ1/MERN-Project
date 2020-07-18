@@ -3,10 +3,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 // requiring passport
 const passport = require("./passport/index");
-// const bodyParser = require()
 // requiring dotenv for env
 const dotenv = require("dotenv");
 dotenv.config();
+// requiring cookie session
+var cookieSession = require("cookie-session");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -14,7 +15,15 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(cors());
 app.use(express.json());
-// app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
+// using passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // connecting to mongoDB
 const URI = process.env.ATLAS_URI;
@@ -40,9 +49,6 @@ const authRouter = require("./routes/auth");
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
 app.use("/auth", authRouter);
-// using passport
-app.use(passport.initialize());
-// app.use(passport.session());
 
 // starting server
 app.listen(PORT, () => {
