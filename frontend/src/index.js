@@ -7,14 +7,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 // importing redux provider
 import { Provider } from "react-redux";
+// importing redux persist gate to wrap the application
+import { PersistGate } from "redux-persist/integration/react";
 // importing redux store
-import store from "./redux/store";
+import { store, persistor } from "./redux/store";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
-        <App />
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>,
