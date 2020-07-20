@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import FormInput from "../FormInput/FormInput.component";
 import Button from "../Button/Button.component";
-import { signInStartAsync } from "../../redux/user/user.actions";
+import { signInStartAsync } from "../../redux/auth/auth.actions";
 
 class SignIn extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class SignIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     // dispatching action to fetch user
     this.props.signInStartAsync(this.state);
     this.setState({ email: "", password: "" });

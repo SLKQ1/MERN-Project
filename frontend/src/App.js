@@ -14,12 +14,10 @@ import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 import ProfilePage from "./pages/Profile/ProfilePage.component";
 // importing redux
 import { connect } from "react-redux";
-import { signUpSuccess } from "./redux/user/user.actions";
 
 function App(props) {
-  // destructuring necessary props
+  // console.log(props);
   const { currentUser } = props;
-  console.log(currentUser);
 
   let location = useLocation();
   let background = location.state && location.state.background;
@@ -28,6 +26,7 @@ function App(props) {
       <HamburgerMenu currentUser={currentUser} />
       <Switch location={background || location}>
         <Route exact path="/" component={HomePage} />
+        {/* blocking the sing in route when user is signed in */}
         <Route
           exact
           path="/sign-in"
@@ -36,8 +35,19 @@ function App(props) {
           }
         />
         <Route path="/wrist-shot/full-size/:id" component={FullSizeImage} />
-        <Route path="/post" component={PostPage} />
-        <Route path="/profile/:id" component={ProfilePage} />
+        {/* only rendering post page when user is signed in */}
+        <Route
+          path="/post"
+          render={() => (!currentUser ? <Redirect to="/" /> : <PostPage />)}
+        />
+        {/* only loading profile page when user is signed in */}
+        <Route
+          path="/profile"
+          render={() => (!currentUser ? <Redirect to="/" /> : <ProfilePage />)}
+        />
+        <Route path="*">
+          <h1>404 not found</h1>
+        </Route>
       </Switch>
       {/* show modal when background is set */}
       {background && <Route path="/wrist-shot/:id" children={<Modal />} />}
@@ -47,7 +57,7 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user.currentUser,
+    currentUser: state.auth.currentUser,
   };
 };
 

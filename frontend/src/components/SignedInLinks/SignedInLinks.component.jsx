@@ -1,9 +1,18 @@
 import React from "react";
 import "./SignedInLinks.styles.css";
+import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
+import { signOutStartAsync } from "../../redux/auth/auth.actions";
 
-function SignedInLinks() {
+function SignedInLinks(props) {
+  console.log(props);
+  const { currentUser } = props;
+  const profilePath = `/profile/${currentUser._id}`;
+  const handleClick = () => {
+    // dispatching sign out action
+    props.signOutStartAsync();
+  };
   return (
     <ul>
       <li>
@@ -13,13 +22,21 @@ function SignedInLinks() {
         <Link to="/post">Post</Link>
       </li>
       <li>
-        <Link to="/profile">Profile</Link>
+        <Link to={profilePath}>Profile</Link>
       </li>
       <li>
-        <Link to="/sign-out">Sign out</Link>
+        <Link to="/" onClick={handleClick}>
+          Sign out
+        </Link>
       </li>
     </ul>
   );
 }
 
-export default SignedInLinks;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOutStartAsync: () => dispatch(signOutStartAsync()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignedInLinks);

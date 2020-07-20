@@ -67,7 +67,6 @@ class Modal extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    wrist_shots: state.post.wrist_shots,
     wrist_shot: state.post.wrist_shot,
   };
 };

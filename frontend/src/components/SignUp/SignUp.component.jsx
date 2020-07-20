@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 
 import FormInput from "../FormInput/FormInput.component";
 import Button from "../Button/Button.component";
-import { Redirect } from "react-router-dom";
-import { signUpStartAsync } from "../../redux/user/user.actions";
+import { signUpStartAsync } from "../../redux/auth/auth.actions";
 
 class SignUp extends Component {
   constructor(props) {
@@ -44,9 +43,6 @@ class SignUp extends Component {
   };
 
   render() {
-    if (this.props.currentUser) {
-      return <Redirect to="/"></Redirect>;
-    }
     return (
       <div className="sign-up">
         <h2>Don't have an account?</h2>
@@ -94,16 +90,9 @@ class SignUp extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    currentUser: state.user.currentUser,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     signUpStartAsync: (credentials) => dispatch(signUpStartAsync(credentials)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(SignUp);

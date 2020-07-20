@@ -4,7 +4,7 @@ import "./HamburgerMenu.styles.css";
 import SignedInLinks from "../SignedInLinks/SignedInLinks.component";
 import SignedOutLinks from "../SignedOutLinks/SignedOutLinks.component";
 
-function HamburgerMenu() {
+function HamburgerMenu({ currentUser }) {
   return (
     <div className="menu-wrap">
       <input type="checkbox" className="toggler" />
@@ -14,8 +14,11 @@ function HamburgerMenu() {
       <div className="menu">
         <div>
           <div>
-            {/* <SignedInLinks /> */}
-            <SignedOutLinks />
+            {currentUser ? (
+              <SignedInLinks currentUser={currentUser} />
+            ) : (
+              <SignedOutLinks />
+            )}
           </div>
         </div>
       </div>
