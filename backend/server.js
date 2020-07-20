@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(
   cookieSession({
     name: "session",
+    maxAge: 24 * 30 * 60 * 60 * 1000,
     keys: ["key1", "key2"],
   })
 );
@@ -46,9 +47,9 @@ const usersRouter = require("./routes/users");
 const postsRouter = require("./routes/posts");
 const authRouter = require("./routes/auth");
 
+app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
-app.use("/auth", authRouter);
 
 // starting server
 app.listen(PORT, () => {
