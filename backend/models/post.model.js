@@ -9,7 +9,7 @@ const postSchema = new Schema(
     },
     description: { type: String },
     imgURL: { type: String, required: true },
-    postedBy: { type: Schema.Types.ObjectId, ref: "Post", required: true },
+    postedBy: { type: String, required: true },
     votes: { type: Number },
     comments: { type: [String] },
   },

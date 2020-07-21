@@ -14,16 +14,12 @@ router.route("/add").post((req, res) => {
   const description = req.body.description;
   const postedBy = req.body.postedBy;
   const imgURL = req.body.imgURL;
-  const votes = 0;
-  const comments = [];
 
   const newPost = new Post({
     title,
     description,
     postedBy,
     imgURL,
-    votes,
-    comments,
   });
 
   newPost
