@@ -14,7 +14,7 @@ const userSchema = new Schema(
       maxlength: 10,
     },
     email: { type: String, required: true, unique: true, trim: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: false },
     post: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   {
