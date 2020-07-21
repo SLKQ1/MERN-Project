@@ -4,19 +4,22 @@ import FormInput from "../../components/FormInput/FormInput.component";
 import Button from "../../components/Button/Button.component";
 import { connect } from "react-redux";
 import { createNewPostStartAsync } from "../../redux/post/post.action";
+import { withRouter } from "react-router-dom";
 
 class PostPage extends Component {
   constructor(props) {
     super(props);
+    // getting current user
     this.state = {
       title: "",
       description: "",
       imgURL: "",
-      postedBy: "Faiz",
+      postedBy: props.currentUser.username,
     };
   }
 
   handleChange = (e) => {
+    console.log(this.props.history);
     const { value, name } = e.target;
     this.setState({ [name]: value });
   };
@@ -37,9 +40,8 @@ class PostPage extends Component {
         title: "",
         description: "",
         imgURL: "",
-        postedBy: "Faiz",
+        postedBy: this.props.currentUser.username,
       });
-
       // redirecting user
       this.props.history.push(`/`);
     }
@@ -86,4 +88,4 @@ const mapDispatchToProps = (dispatch) => ({
   createNewPostStartAsync: (post) => dispatch(createNewPostStartAsync(post)),
 });
 
-export default connect(null, mapDispatchToProps)(PostPage);
+export default connect(null, mapDispatchToProps)(withRouter(PostPage));
