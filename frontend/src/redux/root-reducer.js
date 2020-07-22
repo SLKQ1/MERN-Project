@@ -4,7 +4,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 // importing reducers
 import userReducer from "./user/user.reducer";
-import postReducer from "./post/post.reducer";
+import wristShotReducer from "./wristShots/wristShots.reducer";
 import authReducer from "./auth/auth.reducer";
 
 // config for redux persist
@@ -17,7 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
-  post: postReducer,
+  wristShot: wristShotReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

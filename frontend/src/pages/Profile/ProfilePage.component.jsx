@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./ProfilePage.styles.css";
 import WristShot from "../../components/WristShot/WristShot.component";
+import { connect } from "react-redux";
 
 class ProfilePage extends Component {
+  componentDidMount() {}
   render() {
     return (
       <div className="profile-page">
@@ -12,10 +14,13 @@ class ProfilePage extends Component {
         <div className="profile-content-container">
           <div className="profile-user-posts-container">
             <h2 className="profile-page-content-title">Your posts: </h2>
-            <WristShot></WristShot>
-            <WristShot></WristShot>
-            <WristShot></WristShot>
-            <WristShot></WristShot>
+            {this.props.usersPosts ? (
+              this.props.usersPosts.map((post) => {
+                return <WristShot></WristShot>;
+              })
+            ) : (
+              <h2>You have no posts yet</h2>
+            )}
           </div>
           <div className="profile-user-notifications-container">
             <h2 className="profile-page-content-title">Notifications: </h2>
@@ -37,4 +42,11 @@ class ProfilePage extends Component {
     );
   }
 }
-export default ProfilePage;
+
+const mapStateToProps = (state) => {
+  return {
+    usersPosts: state.user.usersPosts,
+  };
+};
+
+export default connect(mapStateToProps)(ProfilePage);

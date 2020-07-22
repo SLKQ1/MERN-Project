@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Image from "../Image/Image.component";
 import { connect } from "react-redux";
 import Button from "../Button/Button.component";
-import { fetchPostStartAsync } from "../../redux/post/post.action";
+import { fetchPostStartAsync } from "../../redux/wristShots/wristShots.action";
 import { Link } from "react-router-dom";
 
 class Modal extends Component {
@@ -67,7 +67,7 @@ class Modal extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    wrist_shot: state.post.wrist_shot,
+    wrist_shot: state.wristShot.wrist_shot,
   };
 };
 

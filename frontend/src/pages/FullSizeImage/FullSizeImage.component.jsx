@@ -10,7 +10,7 @@ function FullSizeImage(props) {
 }
 
 const mapStateToProps = (state) => ({
-  wrist_shot: state.post.wrist_shot,
+  wrist_shot: state.wristShot.wrist_shot,
 });
 
 export default connect(mapStateToProps)(FullSizeImage);

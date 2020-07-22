@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./HomePage.styles.css";
 import WristShotGrid from "../../components/WristShotGrid/WristShotGrid.component";
 import { connect } from "react-redux";
-import { fetchCollectionStartAsync } from "../../redux/post/post.action";
+import { fetchCollectionStartAsync } from "../../redux/wristShots/wristShots.action";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -52,9 +52,9 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isFetching: state.post.isFetching,
-  wrist_shots: state.post.wrist_shots,
-  errorMessage: state.post.errorMessage,
+  isFetching: state.wristShot.isFetching,
+  wrist_shots: state.wristShot.wrist_shots,
+  errorMessage: state.wristShot.errorMessage,
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCollectionStartAsync: () => dispatch(fetchCollectionStartAsync()),
