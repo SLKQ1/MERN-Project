@@ -15,6 +15,7 @@ import WristShotPage from "./pages/WristShot/WristShotPage.component";
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
 // importing redux
 import { connect } from "react-redux";
+import FourOFourPage from "./pages/404/FourOFourPage.component";
 
 function App(props) {
   // console.log(props);
@@ -50,13 +51,17 @@ function App(props) {
         {/* only loading profile page when user is signed in */}
         <Route
           path="/profile/:id"
-          render={() => (!currentUser ? <Redirect to="/" /> : <ProfilePage />)}
+          render={() =>
+            !currentUser ? (
+              <Redirect to="/" />
+            ) : (
+              <ProfilePage currentUser={currentUser} />
+            )
+          }
         />
         {/* wrist shot page for when user clicks wrist shot on profile */}
         <Route path="/wrist-shot-page/:id" component={WristShotPage} />
-        <Route path="*">
-          <h1>404 not found</h1>
-        </Route>
+        <Route path="*" component={FourOFourPage} />
       </Switch>
       {/* show modal when background is set */}
       {background && <Route path="/wrist-shot/:id" children={<Modal />} />}

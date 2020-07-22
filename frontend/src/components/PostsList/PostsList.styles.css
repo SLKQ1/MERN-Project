@@ -6,6 +6,11 @@
   /* border: 1px solid blue; */
   overflow-y: scroll;
 }
+/* removing styles form link */
+.profile-user-posts-container > a {
+  color: black;
+  text-decoration: none;
+}
 .profile-user-posts-container *:hover {
   transform: scale(1);
 }
