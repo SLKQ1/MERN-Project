@@ -8,10 +8,11 @@ import Modal from "./components/Modal/Modal.component";
 import FullSizeImage from "./pages/FullSizeImage/FullSizeImage.component";
 import PostPage from "./pages/Post/PostPage.component";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
+import ProfilePage from "./pages/Profile/ProfilePage.component";
+import WristShotPage from "./pages/WristShot/WristShotPage.component";
 
 // importing react router
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
-import ProfilePage from "./pages/Profile/ProfilePage.component";
 // importing redux
 import { connect } from "react-redux";
 
@@ -51,6 +52,8 @@ function App(props) {
           path="/profile/:id"
           render={() => (!currentUser ? <Redirect to="/" /> : <ProfilePage />)}
         />
+        {/* wrist shot page for when user clicks wrist shot on profile */}
+        <Route path="/wrist-shot-page/:id" component={WristShotPage} />
         <Route path="*">
           <h1>404 not found</h1>
         </Route>

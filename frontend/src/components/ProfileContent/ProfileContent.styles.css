@@ -1,0 +1,21 @@
+.profile-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* styling content titles */
+.profile-page-content-title {
+  padding-bottom: 20px;
+  color: #2b6e86;
+}
+
+/* styling for desktop and tablet */
+@media (min-width: 480px) {
+  .profile-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
