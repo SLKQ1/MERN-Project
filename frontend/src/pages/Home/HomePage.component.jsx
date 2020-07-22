@@ -18,7 +18,7 @@ class HomePage extends Component {
     if (errorMessage) {
       homePageContent = (
         <div className="wrist-shot-grid-container">
-          <h1>Ops Something when wrong.. </h1>
+          <h1>Ops something went wrong.. </h1>
           <h3>{errorMessage}</h3>
         </div>
       );

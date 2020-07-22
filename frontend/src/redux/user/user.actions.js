@@ -19,10 +19,17 @@ export const fetchUserPostsFailure = (error) => {
     payload: error,
   };
 };
-export const fetchUserPostsStartAsync = (id) => {
+export const fetchUserPostsStartAsync = (username) => {
   return (dispatch) => {
     dispatch(fetchUserPostsStart());
-    axios.get(`/posts`).then((posts) => {});
+    axios
+      .get(`/posts/userPosts/${username}`)
+      .then((posts) => {
+        dispatch(fetchUserPostsSuccess(posts));
+      })
+      .catch((error) => {
+        dispatch(fetchUserPostsFailure(error.message));
+      });
   };
 };
 
@@ -55,17 +62,7 @@ export const createNewPostStartAsync = (user, post) => {
     axios
       .post("/posts/add", post)
       .then((res) => {
-        // making an api call to add post to user
-        // TODO make sure this is the right approach to what I am trying to do here
-        axios
-          .patch(`/users/${user._id}/addPost`, res)
-          .then(() => {
-            // dispatching success action
-            dispatch(createNewPostSuccess(res));
-          })
-          .catch((error) => {
-            dispatch(createNewPostFailure(error.message));
-          });
+        dispatch(createNewPostSuccess(res));
       })
       .catch((error) => {
         dispatch(createNewPostFailure(error.message));

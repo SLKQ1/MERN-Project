@@ -38,11 +38,17 @@ function App(props) {
         {/* only rendering post page when user is signed in */}
         <Route
           path="/post"
-          render={() => (!currentUser ? <Redirect to="/" /> : <PostPage />)}
+          render={() =>
+            !currentUser ? (
+              <Redirect to="/sign-in" />
+            ) : (
+              <PostPage currentUser={currentUser} />
+            )
+          }
         />
         {/* only loading profile page when user is signed in */}
         <Route
-          path="/profile"
+          path="/profile/:id"
           render={() => (!currentUser ? <Redirect to="/" /> : <ProfilePage />)}
         />
         <Route path="*">

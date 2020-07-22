@@ -3,7 +3,7 @@ import userActionTypes from "./user.type";
 const INITIAL_STATE = {
   isFetching: false,
   errorMessage: undefined,
-  usersPosts: null,
+  userPosts: null,
   usersNotifications: null,
 };
 
@@ -19,7 +19,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        usersPosts: action.payload,
+        userPosts: action.payload,
       };
     case userActionTypes.FETCH_USER_POSTS_FAILURE:
       return {
