@@ -35,6 +35,14 @@ router.route("/:id").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// getting all the posts from a specific user
+router.route("/userPosts/:username").get((req, res) => {
+  console.log(req.params.username);
+  Post.find({ postedBy: req.params.username })
+    .then((posts) => res.json(posts))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 // updating a specific post
 router.route("/update/:id").put((req, res) => {
   Post.findById(req.params.id)
