@@ -10,7 +10,7 @@ const postSchema = new Schema(
     description: { type: String },
     imgURL: { type: String, required: true },
     postedBy: { type: String, required: true },
-    votes: { type: Number },
+    votes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     comments: { type: [String] },
   },
   {

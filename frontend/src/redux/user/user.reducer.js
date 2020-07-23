@@ -46,6 +46,23 @@ const userReducer = (state = INITIAL_STATE, action) => {
         errorMessage: action.payload,
       };
 
+    // actions for liking a post
+    case userActionTypes.VOTE_ON_POST_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case userActionTypes.VOTE_ON_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+      };
+    case userActionTypes.VOTE_ON_POST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
     // actions for getting users notifications
     default:
       return state;

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import Button from "../Button/Button.component";
 import { fetchPostStartAsync } from "../../redux/wristShots/wristShots.action";
 import { Link } from "react-router-dom";
+import VoteStar from "../VoteStar/VoteStar.component";
 
 class Modal extends Component {
   componentDidMount() {
@@ -19,9 +20,6 @@ class Modal extends Component {
     history.goBack();
   };
   render() {
-    const incrementVotes = () => {
-      console.log("send dispatch to increase votes");
-    };
     return (
       <div className="modal-container">
         <Button type="button" onClick={this.back}>
@@ -38,10 +36,11 @@ class Modal extends Component {
                 >
                   View Full Image
                 </Link>
-                <span onClick={incrementVotes}>
-                  {" "}
-                  &#9733; {this.props.wrist_shot.data.votes}{" "}
-                </span>
+                <VoteStar
+                  id={this.props.wrist_shot.data._id}
+                  votes={this.props.wrist_shot.data.votes}
+                  clickable={true}
+                />
               </div>
 
               <div className="modal-img-container">

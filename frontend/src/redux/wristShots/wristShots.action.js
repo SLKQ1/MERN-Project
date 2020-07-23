@@ -29,7 +29,7 @@ export const fetchCollectionStartAsync = () => {
     dispatch(fetchCollectionStart());
     // async request
     axios
-      .get(url)
+      .get("/posts/sorted")
       .then((res) => {
         // dispatching success action
         dispatch(fetchCollectionSuccess(res.data));

@@ -39,6 +39,14 @@ function HomePage({
       </div>
     );
   }
+  // if no posts yet
+  else if (wrist_shots.length === 0) {
+    homePageContent = (
+      <div className="wrist-shot-grid-container">
+        <h1>Be the first to post!</h1>
+      </div>
+    );
+  }
   // normal content displayed
   else {
     homePageContent = (

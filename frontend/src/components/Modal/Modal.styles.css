@@ -57,6 +57,7 @@
   float: left;
   cursor: pointer;
 }
+
 .modal-container span:nth-child(2) {
   float: right;
 }

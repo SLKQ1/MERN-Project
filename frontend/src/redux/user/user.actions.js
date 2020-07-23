@@ -69,3 +69,35 @@ export const createNewPostStartAsync = (user, post) => {
       });
   };
 };
+
+// action for user liking a post
+export const voteOnPostStart = () => {
+  return {
+    type: userActionTypes.VOTE_ON_POST_START,
+  };
+};
+export const voteOnPostSuccess = () => {
+  return {
+    type: userActionTypes.VOTE_ON_POST_SUCCESS,
+  };
+};
+export const voteOnPostFailure = (error) => {
+  return {
+    type: userActionTypes.VOTE_ON_POST_FAILURE,
+    payload: error.message,
+  };
+};
+// async call to like a post
+export const voteOnPostStartAsync = (postID, userID) => {
+  return (dispatch) => {
+    dispatch(voteOnPostStart());
+    axios
+      .patch(`/posts/vote/${postID}`, userID)
+      .then((post) => {
+        dispatch(voteOnPostSuccess());
+      })
+      .catch((error) => {
+        dispatch(voteOnPostFailure(error));
+      });
+  };
+};

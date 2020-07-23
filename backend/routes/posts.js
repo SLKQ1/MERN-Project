@@ -1,12 +1,7 @@
 const router = require("express").Router();
 let Post = require("../models/post.model");
 
-// getting all posts
-router.route("/").get((req, res) => {
-  Post.find()
-    .then((posts) => res.json(posts))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
+// Post Routes *********************************************************
 
 // creating a new post
 router.route("/add").post((req, res) => {
@@ -28,9 +23,36 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// Get Routes *********************************************************
+
+// getting all posts
+router.route("/").get((req, res) => {
+  Post.find()
+    .then((posts) => res.json(posts))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// getting all posts sorted from most to least votes
+router.route("/sorted").get((req, res) => {
+  Post.find()
+    .sort({ voteCount: -1 })
+    .exec()
+    .then((posts) => res.json(posts))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 // getting a specific post
 router.route("/:id").get((req, res) => {
   Post.findById(req.params.id)
+    .then((post) => res.json(post))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// getting a specific post and populating its comments and votes
+router.route("/populate/:id").get((req, res) => {
+  Post.findById(req.params.id)
+    .populate("votes")
+    .exec()
     .then((post) => res.json(post))
     .catch((err) => res.status(400).json("Error: " + err));
 });
@@ -42,6 +64,8 @@ router.route("/userPosts/:username").get((req, res) => {
     .then((posts) => res.json(posts))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+// Put/Patch Routes *********************************************************
 
 // updating a specific post
 router.route("/update/:id").put((req, res) => {
@@ -61,6 +85,20 @@ router.route("/update/:id").put((req, res) => {
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
+
+// update a posts vote count
+router.route("/vote/:id").patch((req, res) => {
+  Post.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $addToSet: { votes: req.body.userID } }
+  )
+    .then((post) => {
+      res.json(post);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// Delete Routes *********************************************************
 
 // deleting a specific post
 router.route("/delete/:id").delete((req, res) => {

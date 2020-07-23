@@ -2,6 +2,7 @@ import React from "react";
 import "./WristShot.styles.css";
 
 import { withRouter } from "react-router-dom";
+import VoteStar from "../VoteStar/VoteStar.component";
 
 function WristShot({ postedBy, votes, imgURL, title }) {
   return (
@@ -16,7 +17,7 @@ function WristShot({ postedBy, votes, imgURL, title }) {
         <span className="wrist-shot-user">
           {title} by {postedBy}{" "}
         </span>
-        <span className="wrist-shot-votes"> &#9733; {votes} </span>
+        <VoteStar votes={votes} clickable={false} />
       </div>
     </div>
   );

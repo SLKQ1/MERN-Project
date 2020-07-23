@@ -23,6 +23,7 @@ textarea {
   outline: none;
   border-bottom: 1px solid black;
   font-size: 13px;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* css for mobile */
