@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
 }
+.sign-in-form {
+  width: 500px;
+}
 
 /* css for mobile */
 @media (max-width: 480px) {
@@ -16,6 +19,10 @@
   }
   .sign-in > h4 {
     padding-bottom: 30px;
+  }
+  /* adjusting form width for mobile */
+  .sign-in-form {
+    width: 90vw;
   }
   .sign-in-form label {
     font-size: 20px;

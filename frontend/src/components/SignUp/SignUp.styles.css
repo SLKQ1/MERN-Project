@@ -1,8 +1,10 @@
 .sign-up {
-  /* background: orange; */
-  /* width: 70vw; */
   display: flex;
   flex-direction: column;
+}
+
+.sign-up-form {
+  width: 500px;
 }
 
 /* css for mobile */
@@ -19,6 +21,7 @@
   .sign-up > h4 {
     padding-bottom: 30px;
   }
+
   .sign-up-form label {
     font-size: 20px;
   }
