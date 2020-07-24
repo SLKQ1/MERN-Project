@@ -79,11 +79,11 @@
 .modal-description-container {
   padding: 10px 0;
 }
-.modal-description-container > h2 {
+/* .modal-description-container > h2 {
   font-size: 32px;
-}
+} */
 .modal-description-container > p {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 /* css for mobile */

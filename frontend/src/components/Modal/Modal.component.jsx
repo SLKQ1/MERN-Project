@@ -7,6 +7,7 @@ import Button from "../Button/Button.component";
 import { fetchPostStartAsync } from "../../redux/wristShots/wristShots.action";
 import { Link } from "react-router-dom";
 import VoteStar from "../VoteStar/VoteStar.component";
+import CommentSection from "../CommentSection/CommentSection.component";
 
 class Modal extends Component {
   componentDidMount() {
@@ -51,9 +52,8 @@ class Modal extends Component {
                 <h2>Description: </h2>
                 <p>{this.props.wrist_shot.data.description}</p>
               </div>
-
               <div className="modal-comments-container">
-                <h1>Comments Section Coming Soon</h1>
+                <CommentSection />
               </div>
             </div>
           ) : (
