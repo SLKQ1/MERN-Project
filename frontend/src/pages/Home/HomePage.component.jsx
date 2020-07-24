@@ -43,7 +43,7 @@ function HomePage({
   else if (wrist_shots.length === 0) {
     homePageContent = (
       <div className="wrist-shot-grid-container">
-        <h1>Be the first to post!</h1>
+        <h1>There are no images yet, be the first to post!</h1>
       </div>
     );
   }
@@ -59,7 +59,7 @@ function HomePage({
     <div className="homepage">
       <div className="homepage-title-content">
         <h1>Welcome to Wrist Shot</h1>
-        <p>Post and explore amazing wrist shots.</p>
+        <p>Post and explore amazing watch pictures.</p>
       </div>
       {homePageContent}
     </div>

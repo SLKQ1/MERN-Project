@@ -10,6 +10,7 @@ import PostPage from "./pages/Post/PostPage.component";
 import SignInAndSignUpPage from "./pages/SignInAndSignUp/SignInAndSignUpPage.component";
 import ProfilePage from "./pages/Profile/ProfilePage.component";
 import WristShotPage from "./pages/WristShot/WristShotPage.component";
+import About from "./pages/About/About.component";
 
 // importing react router
 import { Route, Switch, useLocation, Redirect } from "react-router-dom";
@@ -28,6 +29,7 @@ function App(props) {
       <HamburgerMenu currentUser={currentUser} />
       <Switch location={background || location}>
         <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={About} />
         {/* blocking the sing in route when user is signed in */}
         <Route
           exact

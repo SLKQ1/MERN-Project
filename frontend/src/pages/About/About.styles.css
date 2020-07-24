@@ -1,0 +1,18 @@
+.about-page {
+  margin: 50px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-page h1 {
+  padding-top: 30px;
+}
+
+/* css for mobile */
+@media (min-width: 500px) {
+  .about-page {
+    margin: 50px 200px;
+  }
+}
