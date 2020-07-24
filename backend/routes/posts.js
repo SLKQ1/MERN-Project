@@ -59,7 +59,6 @@ router.route("/populate/:id").get((req, res) => {
 
 // getting all the posts from a specific user
 router.route("/userPosts/:username").get((req, res) => {
-  console.log(req.params.username);
   Post.find({ postedBy: req.params.username })
     .then((posts) => res.json(posts))
     .catch((err) => res.status(400).json("Error: " + err));

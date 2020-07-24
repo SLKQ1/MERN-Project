@@ -11,7 +11,7 @@ const postSchema = new Schema(
     imgURL: { type: String, required: true },
     postedBy: { type: String, required: true },
     votes: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    comments: { type: [String] },
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
   {
     timestamps: true,

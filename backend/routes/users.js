@@ -1,6 +1,5 @@
 const router = require("express").Router();
 let User = require("../models/user.model");
-let Post = require("../models/post.model");
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
 
