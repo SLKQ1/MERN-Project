@@ -52,6 +52,7 @@ router.route("/:id").get((req, res) => {
 router.route("/populate/:id").get((req, res) => {
   Post.findById(req.params.id)
     .populate("votes")
+    .populate("comments")
     .exec()
     .then((post) => res.json(post))
     .catch((err) => res.status(400).json("Error: " + err));
@@ -90,6 +91,18 @@ router.route("/vote/:id").patch((req, res) => {
   Post.findByIdAndUpdate(
     { _id: req.params.id },
     { $addToSet: { votes: req.body.userID } }
+  )
+    .then((post) => {
+      res.json(post);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// update posts comments
+router.route("/comment/:id").patch((req, res) => {
+  Post.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $addToSet: { comments: req.body.comment } }
   )
     .then((post) => {
       res.json(post);
