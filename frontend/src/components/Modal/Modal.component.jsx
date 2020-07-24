@@ -53,7 +53,7 @@ class Modal extends Component {
                 <p>{this.props.wrist_shot.data.description}</p>
               </div>
               <div className="modal-comments-container">
-                <CommentSection />
+                <CommentSection wrist_shot={this.props.wrist_shot.data} />
               </div>
             </div>
           ) : (

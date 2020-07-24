@@ -101,3 +101,47 @@ export const voteOnPostStartAsync = (postID, userID) => {
       });
   };
 };
+
+// actions for commenting on a post
+export const commentOnPostStart = () => {
+  return {
+    type: userActionTypes.COMMENT_ON_POST_START,
+  };
+};
+export const commentOnPostSuccess = (comment) => {
+  return {
+    type: userActionTypes.COMMENT_ON_POST_SUCCESS,
+    payload: comment,
+  };
+};
+export const commentOnPostFailure = (error) => {
+  return {
+    type: userActionTypes.COMMENT_ON_POST_FAILURE,
+    payload: error,
+  };
+};
+// async call to post a comment
+export const commentOnPostStartAsync = (comment, postID) => {
+  console.log(comment);
+  console.log(postID);
+  return (dispatch) => {
+    dispatch(commentOnPostStart());
+    axios
+      .post("/comments/add", comment)
+      .then((comment) => {
+        const commentObj = { comment: comment.data._id };
+        // adding the new comment to the post
+        axios
+          .patch(`/posts/comment/${postID}`, commentObj)
+          .then(() => {
+            dispatch(commentOnPostSuccess(comment));
+          })
+          .catch((error) => {
+            dispatch(commentOnPostFailure(error.message));
+          });
+      })
+      .catch((error) => {
+        dispatch(commentOnPostFailure(error.message));
+      });
+  };
+};

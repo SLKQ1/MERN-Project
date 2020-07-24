@@ -46,7 +46,7 @@ router.route("/add").post((req, res) => {
 
   newComment
     .save()
-    .then((comment) => res.json("Comment added: " + comment))
+    .then((comment) => res.json(comment))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -59,7 +59,7 @@ router.route("/update/:id").put((req, res) => {
         (comment.content = req.body.content),
         comment
           .save()
-          .then(() => res.json("Comment updated: " + comment))
+          .then(() => res.json(comment))
           .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));

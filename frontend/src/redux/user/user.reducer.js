@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   errorMessage: undefined,
   userPosts: null,
   usersNotifications: null,
+  comment: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -63,7 +64,25 @@ const userReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         errorMessage: action.payload,
       };
-    // actions for getting users notifications
+
+    // actions for commenting on a post
+    case userActionTypes.COMMENT_ON_POST_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case userActionTypes.COMMENT_ON_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        comment: action.payload,
+      };
+    case userActionTypes.COMMENT_ON_POST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }

@@ -69,7 +69,7 @@ export const fetchPostStartAsync = (wrist_shot_id) => {
     dispatch(fetchPostStart());
     // making api call to get post
     axios
-      .get(`${url}/${wrist_shot_id}`)
+      .get(`${url}/populate/${wrist_shot_id}`)
       .then((res) => {
         // dispatching success action
         // console.log(res)
