@@ -25,7 +25,7 @@ function CommentSection(props) {
     e.preventDefault();
     if (userComment.content !== "") {
       // pushing a temp comment onto the comments list to make the user think the comment was instantly posted.
-      comments.push({ ...userComment, createdAt: "Now", _id: Math.random() });
+      comments.push({ ...userComment, createdAt: Date(), _id: Math.random() });
       const { commentOnPostStartAsync, wrist_shot } = props;
 
       // dispatching async action to add comment
