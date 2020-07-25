@@ -28,15 +28,12 @@ app.use(passport.session());
 
 // connecting to mongoDB
 const URI = process.env.ATLAS_URI;
-mongoose.connect(
-  "mongodb+srv://Faiz:Faiz@wristshot-tv0qm.mongodb.net/WristShot?retryWrites=true&w=majority",
-  {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
+mongoose.connect(URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 const connection = mongoose.connection;
 connection.once("open", () => {
