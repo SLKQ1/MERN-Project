@@ -8,7 +8,7 @@ function ProfileContent() {
       <PostsList />
       <div className="profile-user-notifications-container">
         <h2 className="profile-page-content-title">Notifications: </h2>
-        <h3>notification</h3>
+        <h3>notifications coming soon</h3>
       </div>
     </div>
   );

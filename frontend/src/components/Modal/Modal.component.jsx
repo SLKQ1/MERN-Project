@@ -37,11 +37,19 @@ class Modal extends Component {
                 >
                   View Full Image
                 </Link>
-                <VoteStar
-                  id={this.props.wrist_shot.data._id}
-                  votes={this.props.wrist_shot.data.votes}
-                  clickable={true}
-                />
+                {this.props.currentUser ? (
+                  <VoteStar
+                    id={this.props.wrist_shot.data._id}
+                    votes={this.props.wrist_shot.data.votes}
+                    clickable={true}
+                  />
+                ) : (
+                  <VoteStar
+                    id={this.props.wrist_shot.data._id}
+                    votes={this.props.wrist_shot.data.votes}
+                    clickable={false}
+                  />
+                )}
               </div>
 
               <div className="modal-img-container">
@@ -66,6 +74,7 @@ class Modal extends Component {
 }
 const mapStateToProps = (state) => {
   return {
+    currentUser: state.auth.currentUser,
     wrist_shot: state.wristShot.wrist_shot,
   };
 };

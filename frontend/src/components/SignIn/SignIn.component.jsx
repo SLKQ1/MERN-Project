@@ -7,7 +7,8 @@ import Button from "../Button/Button.component";
 import { signInStartAsync } from "../../redux/auth/auth.actions";
 import { useState } from "react";
 
-function SignIn({ signInStartAsync }) {
+function SignIn({ signInStartAsync, authError }) {
+  console.log(authError);
   const [userCredentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -54,10 +55,16 @@ function SignIn({ signInStartAsync }) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signInStartAsync: (credentials) => dispatch(signInStartAsync(credentials)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

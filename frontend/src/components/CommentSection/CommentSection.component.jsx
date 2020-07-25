@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function CommentSection(props) {
   const [userComment, setComment] = useState({
-    postedBy: props.currentUser.username,
+    postedBy: props.currentUser ? props.currentUser.username : "",
     content: "",
   });
 
@@ -24,10 +24,11 @@ function CommentSection(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userComment.content !== "") {
+      // setting the username before sending
+      // setComment({ ...userComment, postedBy: props.currentUser.username });
       // pushing a temp comment onto the comments list to make the user think the comment was instantly posted.
       comments.push({ ...userComment, createdAt: Date(), _id: Math.random() });
       const { commentOnPostStartAsync, wrist_shot } = props;
-
       // dispatching async action to add comment
       commentOnPostStartAsync(userComment, wrist_shot._id);
       // resetting state
